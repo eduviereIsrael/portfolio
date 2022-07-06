@@ -148,7 +148,7 @@
 }
 
 .app__work-details-div .app__work-details .work__details .work__details-desc {
-  width: 50%;
+  width: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,13 +160,20 @@
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
+          align-items: flex-start;
+  text-align: left;
+}
+
+.work__details-desc h4 {
+  text-align: left;
+}
+.work__details-desc p {
   text-align: left;
 }
 
 @media screen and (max-width: 750px) {
   .app__work-details-div .app__work-details .work__details .work__details-desc {
-    width: 70%;
+    width: 60%;
   }
 }
 
@@ -180,7 +187,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+      justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

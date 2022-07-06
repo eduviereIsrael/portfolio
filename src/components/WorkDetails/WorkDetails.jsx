@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { useStateContext } from '../../context/StateContext'
-// import "./workdetails.css"
-import { urlFor } from '../client';
+import "./workdetails.css"
+import { urlFor } from '../../client'
 
 const WorkDetails = () => {
 
