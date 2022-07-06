@@ -31,7 +31,7 @@ const WorkDetails = () => {
                     <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
                     <div className='work__details-links'>
                       <a className='work__details-link view' href={clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
-                      <a className='work__details-link code' href={clickedWork.codeLink} target="_blank" rel="noreferrer">github repo</a>
+                      {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
                     </div>
                   </div>
                   
