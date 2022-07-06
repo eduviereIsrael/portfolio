@@ -297,6 +297,9 @@
           justify-content: space-around;
           align-items: center;
           text-align: left;
+          @media screen and (max-width: 750px){
+            width: 100%;
+          }
           .work__details-links {
             width: 100%;
             display: flex;
