@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 
-
+import { useStateContext } from '../../context/StateContext';
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
+import { urlFor } from '../../client';
 import './Testimonial.scss';
 
 const Testimonial = () => {
-  const [brands, setBrands] = useState([]);
-  const [testimonials, setTestimonials] = useState([])
+  // const [brands, setBrands] = useState([]);
+  // const [testimonials, setTestimonials] = useState([])
+  const { testimonials, brands } = useStateContext();
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleClick = (index) => {
     setCurrentIndex(index)
   }
 
-  useEffect(() => {
-    const query = '*[_type == "testimonials"]'
-    const brandsQuery = '*[_type == "brands"]'
+  // useEffect(() => {
+  //   const query = '*[_type == "testimonials"]'
+  //   const brandsQuery = '*[_type == "brands"]'
 
-    client.fetch(query)
-      .then((data) => {
-        setTestimonials(data);
-      })
+  //   client.fetch(query)
+  //     .then((data) => {
+  //       setTestimonials(data);
+  //     })
 
-    client.fetch(brandsQuery)
-      .then((data) => {
-        setBrands(data);
-      })
-  }, [])
+  //   client.fetch(brandsQuery)
+  //     .then((data) => {
+  //       setBrands(data);
+  //     })
+  // }, [])
 
   const test = testimonials[currentIndex];
 

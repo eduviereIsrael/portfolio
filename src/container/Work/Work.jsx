@@ -3,6 +3,8 @@ import { AiFillEye, AiFillGithub } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 
 
+import { useStateContext } from '../../context/StateContext';
+
 import { AppWrap, MotionWrap } from '../../wrapper'
 import { urlFor, client } from '../../client'
 
@@ -10,10 +12,11 @@ import './Work.scss';
 
 const Work = () => {
 
-  const [activeFilter, setActiveFilter] = useState('All')
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
+  const { showDetails, setShowDetails, setClickedWork, handleWorkClick } = useStateContext();
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [filterWork, setFilterWork] = useState([]);
   const [works, setWorks] = useState([])
-  const [filterWork, setFilterWork] = useState([])
 
   useEffect(() => {
     const query = '*[_type == "works"]'
@@ -24,7 +27,12 @@ const Work = () => {
         setFilterWork(data);
       })
   }, [])
-  
+  // const settingFilterWork = async () => {
+  //   await works.length
+  //   setFilterWork(works)
+  // }
+  // settingFilterWork();
+
 
   const handleWorkFilter = item => {
     setActiveFilter(item);
@@ -40,6 +48,8 @@ const Work = () => {
       }
     }, 500)
   }
+  
+  // if (works.length > 1) handleWorkFilter();
 
   return (
     <>
@@ -60,11 +70,14 @@ const Work = () => {
       animate = {animateCard}
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__work-portfolio">
-        {filterWork.map((work, index) => (
-          <div className='app__work-item app__flex' key={index}>
+        {filterWork.length? filterWork.map((work, index) => (
+          <div className='app__work-item app__flex' key={index} onClick={() => {
+              setShowDetails(!showDetails)
+              setClickedWork(work)
+            }}>
             <div className='app__work-img app__flex'>
               <img src={urlFor(work.imgUrl)} alt={work.name}/>
-              <motion.div
+              {/* <motion.div
               whileHover={{opacity: [0, 1]}}
               transition={{duration: 0.25, staggerChildren: 0.5, ease: 'easeInOut'}}
               className="app__work-hover app__flex"
@@ -89,22 +102,23 @@ const Work = () => {
                     <AiFillGithub />
                   </motion.div>
                 </a>
-              </motion.div>
+              </motion.div> */}
             </div>
 
             <div className='app__work-content app__flex'>
               <h4 className='bold-text'>
                 {work.title}
               </h4>
-              <p className='p-text' style={{marginTop: 10}}>{work.description}</p>
+              
               <div className='app__work-tag app__flex'  >
                 <p className="p-text">{work.tags[0]}</p>
               </div>
             </div>
 
           </div>
-        ))}
+        )): ''}
       </motion.div>
+      
     </>
   )
 }

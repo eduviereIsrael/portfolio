@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion'
 // import ReactTooltip from 'react-tooltip'
 
+import { useStateContext } from '../../context/StateContext';
 import { AppWrap, MotionWrap } from '../../wrapper'
-import { urlFor, client } from '../../client'
+import { urlFor } from '../../client'
 
 import './Skills.scss';
 
@@ -12,24 +13,26 @@ import './Skills.scss';
 
 const Skills = () => {
 
+  const { experience, skills } = useStateContext();
 
-  const [experience, setExperience] = useState([]);
-  const [skills, setSkills] = useState([])
 
-  useEffect(() => {
-    const query = '*[_type == "experiences"]'
-    const skillsQuery = '*[_type == "skills"]'
+  // const [experience, setExperience] = useState([]);
+  // const [skills, setSkills] = useState([])
 
-    client.fetch(query)
-      .then((data) => {
-        setExperience(data);
-      })
+  // useEffect(() => {
+  //   const query = '*[_type == "experiences"]'
+  //   const skillsQuery = '*[_type == "skills"]'
 
-    client.fetch(skillsQuery)
-      .then((data) => {
-        setSkills(data);
-      })
-  }, [])
+  //   client.fetch(query)
+  //     .then((data) => {
+  //       setExperience(data);
+  //     })
+
+  //   client.fetch(skillsQuery)
+  //     .then((data) => {
+  //       setSkills(data);
+  //     })
+  // }, [])
 
   return (
     <>
@@ -37,12 +40,12 @@ const Skills = () => {
 
       <div className='app__skills-container'>
         <motion.div className="app__skills-list">
-          {skills?.map((skill) => (
+          {skills?.map((skill, i) => (
             <motion.div 
               whileInView = {{ opacity: [0, 1] }}
               transition= {{ duration: 0.5 }}
               className="app__skills-item app__flex"
-              key={skill.name}
+              key={i}
             >
               <div className='app__flex' style={{backgroundColor: skill.bgColor }}>
                 <img src={urlFor(skill.icon)} alt={skill.name} />
@@ -54,19 +57,20 @@ const Skills = () => {
 
         <motion.div className="app__skills-exp">
           {/* {console.log(`HERE ${experience.year}`)} */}
-          {experience?.map((experience) => (
-              // {console.log(experience.year)}
+          {experience?.map((experience, i) => (
 
             <motion.div
               className="app__skills-exp-item"
-              key = {experience.year}
+              key = {i}
               
             >
               <div className="app__skills-exp-year">
+               {/* {console.log(experience.year)} */}
+
                 <p className="bold-text">{experience.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
-                {experience.works.map((work) => (
+                {experience.works.map((work, i) => (
                   <div>
                     <motion.div
                       whileInView = {{ opacity: [0, 1] }}
@@ -75,7 +79,7 @@ const Skills = () => {
                       // data-tip={work.desc}
                       // data-for={work.name}
                       
-                      key={work.name}
+                      key={i}
                     >
                         <h4 className = "bold-text">
                           {work.name}

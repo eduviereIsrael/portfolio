@@ -8,6 +8,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import './index.css'
+import { StateContext } from './context/StateContext';
+
 
 
 import App from "./App";
@@ -17,6 +19,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <App />
+    <StateContext>
+      <App />
+    </StateContext>
+
   </StrictMode>
 );

@@ -1,48 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 // import { images } from '../../constants'
-import {urlFor, client } from '../../client'
+import {urlFor} from '../../client'
+import { useStateContext } from '../../context/StateContext';
 
 import { AppWrap, MotionWrap } from '../../wrapper'
 
 import './About.scss';
 
-// const abouts = [
-//   {
-//   title : 'Web Development',
-//   description: 'I am Front end web developer',
-//   imgUrl: images.about01
-//   },
-//   {
-//   title : 'UI/UX Design',
-//   description: 'I am Front end web developer',
-//   imgUrl: images.about02 
-//   },
-//   {
-//   title : 'Web Design',
-//   description: 'I am Front end web developer',
-//   imgUrl: images.about03 
-//   },
-//   {
-//   title : 'Software programmer',
-//   description: 'I am Front end web developer',
-//   imgUrl: images.about04 
-//   },
-// ]
 
 const About = () => {
 
-  const [abouts, setAbouts] = useState([]);
+  const { abouts } = useStateContext();
 
-  useEffect(() => {
-    const query = '*[_type == "abouts"]';
 
-    client.fetch(query)
-      .then((data) => {
-        setAbouts(data)
-      })
+  // const [abouts, setAbouts] = useState([]);
+
+  // useEffect(() => {
+  //   const query = '*[_type == "abouts"]';
+
+  //   client.fetch(query)
+  //     .then((data) => {
+  //       setAbouts(data)
+  //     })
      
-  }, []);
+  // }, []);
+
+  // console.log(abouts)
   
 
   return (
