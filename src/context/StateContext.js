@@ -38,8 +38,8 @@ export const StateContext = ({children}) => {
 
         client.fetch(worksQuery)
           .then((data) => {
-            // console.log(data)
-            setWorks(data)
+            console.log(data)
+            // setWorks(data)
           })
 
         client.fetch(experiencesQuery)

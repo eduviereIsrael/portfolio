@@ -7,7 +7,7 @@ import { urlFor } from '../../client'
 const WorkDetails = () => {
 
   const { showDetails, setShowDetails, clickedWork } = useStateContext();
-  console.log(clickedWork)
+  // console.log(clickedWork)
   
   return (
     <div>
