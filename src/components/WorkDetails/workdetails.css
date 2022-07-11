@@ -143,7 +143,7 @@
 
 @media screen and (max-width: 450px) {
   .app__work-details-div .app__work-details .work__details .work__details-img {
-    width: 94%;
+    width: 100%;
   }
 }
 
