@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useStateContext } from '../../context/StateContext'
-import "./workdetails.scss"
+import "./workdetails.css"
 import { urlFor } from '../../client'
 
 const WorkDetails = () => {
@@ -27,12 +27,10 @@ const WorkDetails = () => {
                     <img src={urlFor(clickedWork.imgUrl)} alt="" />
                   </div>
                   <div className='work__details-body'>
-                    <div className='work__details-desc'>
                       <h4 className='bold-text'>
                         {clickedWork.title}
                       </h4>
                       <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
-                    </div>
                     <div className='work__details-links'>
                       <a className='work__details-link view' href={clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
                       {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}

@@ -37,6 +37,9 @@
     }
     @media screen and (max-width: 600px) {
         flex-direction: column;
+        img {
+            margin: 0 0 15px 0;
+        }
     }
 }
 
@@ -50,12 +53,12 @@
     justify-content: space-around;
     align-items: flex-start;
 
-    p {
-        font-size: 1.25rem;
-        line-height: 2rem;
-        color: var(--black-color);
-        font-family: var(--font-base);
-    }
+    // p {
+    //     font-size: 1.25rem;
+    //     line-height: 2rem;
+    //     color: var(--black-color);
+    //     font-family: var(--font-base);
+    // }
 
     h4 {
         font-weight: 600;

@@ -1,0 +1,292 @@
+.app__work-details-div {
+  z-index: 2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.595);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app__work-details-div .app__work-details {
+  border-radius: 10px;
+  width: 50%;
+  background-color: #ffffff;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .app__work-details-div .app__work-details {
+    width: 85%;
+  }
+}
+
+.app__work-details-div .app__work-details .x-cont {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.app__work-details-div .app__work-details .x-icon {
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 35px;
+  height: 35px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.app__work-details-div .app__work-details .x-icon:hover {
+  cursor: pointer;
+}
+
+.app__work-details-div .app__work-details .x-icon div {
+  position: absolute;
+}
+
+.app__work-details-div .app__work-details .x-icon .x-1 {
+  height: 2px;
+  width: 20px;
+  background-color: black;
+  -webkit-transform: rotate(45deg) translateY(0px) translateX(0px);
+          transform: rotate(45deg) translateY(0px) translateX(0px);
+}
+
+.app__work-details-div .app__work-details .x-icon .x-2 {
+  height: 2px;
+  width: 20px;
+  background-color: black;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.app__work-details-div .app__work-details .work__details {
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .app__work-details-div .app__work-details .work__details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.app__work-details-div .app__work-details .work__details .work__details-img {
+  border-radius: 15px;
+  width: 50%;
+}
+
+.app__work-details-div .app__work-details .work__details .work__details-img img {
+  border-radius: 5px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .app__work-details-div .app__work-details .work__details .work__details-img {
+    width: 70%;
+    margin:0 0 30px 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__work-details-div .app__work-details .work__details .work__details-img {
+    width: 94%;
+  }
+}
+
+.work__details-body {
+  box-sizing: border-box;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* border: 2px solid; */
+
+  /* border: 2px solid; */
+  padding: 0 0 0 30px;
+}
+
+@media screen and (max-width: 1000px) {
+  .work__details-body {
+    width: 70%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  .work__details-body {
+    width: 94%;
+  }
+}
+
+
+ .work__details-body h4{
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+ .work__details-body p{
+  flex: 1;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+@media screen and (max-width: 750px) {
+  .work__details-desc {
+    width: 70%;
+  }
+}
+
+ .work__details-links {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media screen and (max-width: 1000px) {
+  .work__details-links {
+    justify-content: flex-start;
+  }
+}
+
+
+.work__details-link {
+  margin: 25px 0 0 0;
+  font-size: 15px;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: var(--secondary-color);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+  .work__details-link {
+    font-size: 13px;
+  }
+}
+
+.work__details-links .view {
+  width: 40%;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.work__details-links .code {
+  width: 40%;
+  background-color: #cbcbcb00;
+  color: #202020;
+  border: 1px solid #202020;
+}
+
+@media screen and (max-width: 750px) {
+  .work__details-links .code {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .work__details-links .code {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .work__details-links {
+    margin: 20px 0 0 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+   .view {
+    width: 80%;
+    margin: 5px 0;
+  }
+  .code {
+    width: 80%;
+    margin: 5px 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
