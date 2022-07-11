@@ -32,6 +32,9 @@ const WorkDetails = () => {
                         {clickedWork.title}
                       </h4>
                       <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
+                      <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
+                      <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
+                      <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
                     </div>
                     <div className='work__details-links'>
                       <a className='work__details-link view' href={clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
