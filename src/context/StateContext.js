@@ -8,7 +8,7 @@ const Context = createContext();
 
 
 export const StateContext = ({children}) => {
-    // const [works, setWorks] = useState([]);
+    const [works, setWorks] = useState([]);
     const [abouts, setAbouts] = useState([]);
     const [experience, setExperience] = useState([]);
     const [skills, setSkills] = useState([])
@@ -26,7 +26,7 @@ export const StateContext = ({children}) => {
     useEffect(() => {
 
         const aboutsQuery = '*[_type == "abouts"]'
-        // const worksQuery = '*[_type == "works"]'
+        const worksQuery = '*[_type == "works"]'
         const experiencesQuery = '*[_type == "experiences"]'
         const skillsQuery = '*[_type == "skills"]'
         const testimonialsQuery = '*[_type == "testimonials"]'
@@ -38,11 +38,11 @@ export const StateContext = ({children}) => {
             setAbouts(data)
           })
 
-        // client.fetch(worksQuery)
-        //   .then((data) => {
-        //     console.log(data)
-        //     // setWorks(data)
-        //   })
+        client.fetch(worksQuery)
+          .then((data) => {
+            // console.log(data)
+            setWorks(data)
+          })
 
         client.fetch(experiencesQuery)
           .then((data) => {

@@ -56,7 +56,7 @@ const Work = () => {
         Selected <span>Projects <br /> I've worked on</span> in the past <span></span> 
       </h2>
       <div className='app__work-filter'>
-        {['ReactJs Apps', 'CMS', 'All'].map((item, index) => (
+        {['Web Apps', 'UI/UX', 'ReactJs Apps', 'VanillaJs Apps', 'CMS', 'All'].map((item, index) => (
           <div key={index}
           onClick={() => handleWorkFilter(item)}
           className = {`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
