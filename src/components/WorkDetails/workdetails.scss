@@ -135,6 +135,7 @@
           flex-direction: row;
           justify-content: space-around;
           align-items: center;
+          flex-wrap: wrap;
           // background-color: orange;
           
 
@@ -150,7 +151,7 @@
             justify-content: center;
             text-align: center;
             width: 200px;
-            height: 30px;
+            height: 40px;
             border-radius: 10px;
             background-color: var(--secondary-color);
             text-decoration: none;
@@ -180,19 +181,19 @@
               font-size: 13px;
             }
           }
-          @media screen and (max-width: 600px){
-            margin: 20px 0 0 0;
-            flex-direction: column;
-            justify-content: center;
-            .view {
-              width: 80%;
-              margin: 5px 0;
-            }
-            .code {
-              width: 80%;
-              margin: 5px 0;
-            }
-          }
+          // @media screen and (max-width: 600px){
+          //   margin: 20px 0 0 0;
+          //   flex-direction: column;
+          //   justify-content: center;
+          //   .view {
+          //     width: 80%;
+          //     margin: 5px 0;
+          //   }
+          //   .code {
+          //     width: 80%;
+          //     margin: 5px 0;
+          //   }
+          // }
 
         }
       }
