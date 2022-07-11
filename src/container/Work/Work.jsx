@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AiFillEye, AiFillGithub } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 
 
@@ -11,7 +12,7 @@ import './Work.scss';
 
 const Work = () => {
 
-  const { handleWorkClick, setClickedWork, setOpen } = useStateContext();
+  const { showDetails, setShowDetails, setClickedWork, handleWorkClick } = useStateContext();
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [filterWork, setFilterWork] = useState([]);
@@ -56,7 +57,7 @@ const Work = () => {
         Selected <span>Projects <br /> I've worked on</span> in the past <span></span> 
       </h2>
       <div className='app__work-filter'>
-        {['Web Apps', 'UI/UX', 'ReactJs Apps', 'VanillaJs Apps', 'CMS', 'All'].map((item, index) => (
+        {['ReactJs Apps', 'CMS', 'All'].map((item, index) => (
           <div key={index}
           onClick={() => handleWorkFilter(item)}
           className = {`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
@@ -70,11 +71,10 @@ const Work = () => {
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__work-portfolio">
         {filterWork.length? filterWork.map((work, index) => (
-          <div className='app__work-item app__flex' key={index} onClick={
-            ()=> {
+          <div className='app__work-item app__flex' key={index} onClick={() => {
+              setShowDetails(!showDetails)
               setClickedWork(work)
-              setOpen(true)
-              }}>
+            }}>
             <div className='app__work-img app__flex'>
               <img src={urlFor(work.imgUrl)} alt={work.name}/>
               {/* <motion.div
