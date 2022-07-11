@@ -168,7 +168,7 @@
 }
 @media screen and (max-width: 450px) {
   .work__details-body {
-    width: 94%;
+    width: 100%;
   }
 }
 
