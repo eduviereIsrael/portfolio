@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillEye, AiFillGithub } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 
 
@@ -12,7 +11,7 @@ import './Work.scss';
 
 const Work = () => {
 
-  const { showDetails, setShowDetails, setClickedWork, handleWorkClick } = useStateContext();
+  const { handleWorkClick, setClickedWork, setOpen } = useStateContext();
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [filterWork, setFilterWork] = useState([]);
@@ -71,10 +70,11 @@ const Work = () => {
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__work-portfolio">
         {filterWork.length? filterWork.map((work, index) => (
-          <div className='app__work-item app__flex' key={index} onClick={() => {
-              setShowDetails(!showDetails)
+          <div className='app__work-item app__flex' key={index} onClick={
+            ()=> {
               setClickedWork(work)
-            }}>
+              setOpen(true)
+              }}>
             <div className='app__work-img app__flex'>
               <img src={urlFor(work.imgUrl)} alt={work.name}/>
               {/* <motion.div

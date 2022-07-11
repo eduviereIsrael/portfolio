@@ -5,6 +5,7 @@ import { About, Footer, Header, Skills, Testimonial, Work } from './container';
 import {Navbar} from './components';
 import './App.scss';
 import WorkDetails from './components/WorkDetails/WorkDetails';
+import BasicModal from './container/BasicModal';
 // import { useStateContext } from './context/StateContext';
 
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
         <Skills />
         <Testimonial />
         <Footer />
-        <WorkDetails />
+        {/* <WorkDetails /> */}
+        <BasicModal />
       </div>
   )
 }
