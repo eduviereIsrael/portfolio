@@ -166,6 +166,7 @@
     padding: 0;
   }
 }
+
 @media screen and (max-width: 450px) {
   .work__details-body {
     width: 100%;
@@ -173,12 +174,13 @@
 }
 
 
- .work__details-body h4{
+.work__details-body h4{
   display: block;
   width: 100%;
   text-align: left;
 }
- .work__details-body p{
+
+.work__details-body p{
   flex: 1;
   display: block;
   width: 100%;
