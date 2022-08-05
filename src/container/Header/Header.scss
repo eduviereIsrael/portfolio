@@ -163,8 +163,9 @@
     height: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     position: relative;
     bottom: 0;
     // background-color: #fff;
@@ -174,7 +175,7 @@
         object-fit: contain;
         z-index: 1;
         // position: absolute;
-        margin: auto;
+        margin: 0;
     }
 
     .overlay_circle {
