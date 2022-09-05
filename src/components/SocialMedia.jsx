@@ -1,5 +1,6 @@
-import React from 'react'
-import {  BsInstagram, BsLinkedin, BsGithub } from 'react-icons/bs'
+import React from 'react';
+import {  BsInstagram, BsLinkedin, BsGithub } from 'react-icons/bs';
+// import './SocialMedia.scss'
 // import { FaFacebook } from 'react-icons/fa'
 
 const SocialMedia = () => {
