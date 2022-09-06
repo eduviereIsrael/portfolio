@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useStateContext } from './context/StateContext';
 import {urlFor} from './client';
 import { motion } from 'framer-motion';
+import { useParams } from 'react-router';
 
 
 import "./ProjectPages.scss";
@@ -32,54 +33,46 @@ const AnimatePage = ({children}) => {
 
 const ProjectPages = () => {
 
-  const {setClickedWork, clickedWork, project, setProject} = useStateContext()
+  const { proj, clickedWork} = useStateContext();
 
-  useEffect(() => {
-    const project = JSON.parse(localStorage.getItem('project'));
-    if (project) {
-     setClickedWork(project);
-    } else {
-      setClickedWork(clickedWork)
-    }
-  }, []);
+  const params = useParams()
 
-  // const {clickedWork} = useStateContext()
-  // let params = useParams()
-  // const viewedWork = proj.find(work => work.title === params.projectName)
+  const getItem = (x) => {
+    let foundItem = proj.find(item => item.title === x)
+    return foundItem
+  }
 
-
+  const vWork = getItem(params.name)
+  console.log(vWork)
 
 
   return (
     <AnimatePage>
+      {/* {vWork?  */}
         <div className='clicked__work'>
-            {clickedWork? 
-              <div className='work__details'>
-                <div className='work__details-img'>
-                  <img src={urlFor(clickedWork && clickedWork.imgUrl)} alt="" />
-                </div>
-                
-                    <h4 className='bold-text'>
-                      {clickedWork && clickedWork.title}
-                    </h4>
-                    <p className='p-text' style={{marginTop: 10}}>{clickedWork && clickedWork.description}</p>
-                    <div>
-                      <p className='p-text'>My Role: {clickedWork && clickedWork.Role}</p>
-                    </div>
-                    <div className='tools-div'>{clickedWork && clickedWork.Tools.map((item, i) => (
-                      <span className='p-text tools' key={i}>{item}</span>
-                    ))}</div>
-                  <div className='work__details-links'>
-                    <a className='work__details-link view' href={clickedWork && clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
-                    {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
+            <div className='work__details'>
+              <div className='work__details-img'>
+                <img src={urlFor(vWork.imgUrl)} alt={vWork.name} />
+                {/* <h1>Hello world</h1> */}
+              </div>
+                  <h4 className='bold-text'>
+                    {clickedWork && clickedWork.title}
+                  </h4>
+                  <p className='p-text' style={{marginTop: 10}}>{clickedWork && clickedWork.description}</p>
+                  <div>
+                    <p className='p-text'>My Role: {clickedWork && clickedWork.Role}</p>
                   </div>
-                </div>  
-
-              :
-              <></>
-            }
-          
+                  <div className='tools-div'>{clickedWork && clickedWork.Tools.map((item, i) => (
+                    <span className='p-text tools' key={i}>{item}</span>
+                  ))}</div>
+                <div className='work__details-links'>
+                  <a className='work__details-link view' href={clickedWork && clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
+                  {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
+                </div>
+            </div>  
         </div>
+        {/* : <></>
+      } */}
     </AnimatePage>
 
   )

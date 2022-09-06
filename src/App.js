@@ -24,7 +24,7 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element = {<Main/>} />
-              <Route path="/project/:projectName" element = {<ProjectPages/>} />
+              <Route path="/project/:name" element = {<ProjectPages/>} />
             </Routes>
           </div>
         </WrapScroll>

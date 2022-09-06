@@ -13,7 +13,7 @@ import './Work.scss';
 
 const Work = () => {
 
-  const {showDetails, setShowDetails, setClickedWork, handleWorkClick } = useStateContext();
+  const {showDetails, setShowDetails, handleWorkClick, setClickedWork } = useStateContext();
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [filterWork, setFilterWork] = useState([]);
@@ -59,7 +59,7 @@ const Work = () => {
       </h2>
       <div className='app__work-filter'>
         {['All','ReactJs Apps','VanillaJs Apps' ,'CMS'].map((item, index) => (
-          <div key={index}
+          <div key={item}
           onClick={() => handleWorkFilter(item)}
           className = {`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
           >
@@ -71,11 +71,11 @@ const Work = () => {
       animate = {animateCard}
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__work-portfolio">
-        {filterWork.length? filterWork.map((work, index) => (
-          <Link to={`/project/${work.title}`}>
-            <div className='app__work-item app__flex' key={index} onClick={() => {
+        {filterWork.length? filterWork.map((work, i) => (
+          <Link to={`/project/${work.title}`} key={i}>
+            <div className='app__work-item app__flex'  onClick={() => {
                 // setShowDetails(!showDetails)
-                setClickedWork(work)
+                // setClickedWork(work)
               }}>
               <div className='app__work-img app__flex'>
                 <img src={urlFor(work.imgUrl)} alt={work.name}/>

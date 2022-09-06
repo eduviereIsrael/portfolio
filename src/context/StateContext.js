@@ -75,10 +75,10 @@ export const StateContext = ({children}) => {
 
       }, [])
 
-    useEffect(() => {
-      localStorage.setItem('project', JSON.stringify(clickedWork));
-      // console.log(clickedWork)
-    }, [clickedWork]);
+    // useEffect(() => {
+    //   localStorage.setItem('project', JSON.stringify(clickedWork));
+    //   // console.log(clickedWork)
+    // }, [clickedWork]);
 
     const handleWorkClick = () => {
         setOpen(true)
@@ -111,6 +111,7 @@ export const StateContext = ({children}) => {
                 handleOpen,
                 handleClose,
                 project,
+                proj,
                 setProject
             }}>
             {children}
