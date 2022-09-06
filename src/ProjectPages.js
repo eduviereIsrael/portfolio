@@ -56,22 +56,22 @@ const ProjectPages = () => {
             {clickedWork? 
               <div className='work__details'>
                 <div className='work__details-img'>
-                  <img src={urlFor(clickedWork?.imgUrl)} alt="" />
+                  <img src={urlFor(clickedWork && clickedWork.imgUrl)} alt="" />
                 </div>
                 
                     <h4 className='bold-text'>
-                      {clickedWork?.title}
+                      {clickedWork && clickedWork.title}
                     </h4>
-                    <p className='p-text' style={{marginTop: 10}}>{clickedWork?.description}</p>
+                    <p className='p-text' style={{marginTop: 10}}>{clickedWork && clickedWork.description}</p>
                     <div>
-                      <p className='p-text'>My Role: {clickedWork?.Role}</p>
+                      <p className='p-text'>My Role: {clickedWork && clickedWork.Role}</p>
                     </div>
-                    <div className='tools-div'>{clickedWork?.Tools.map((item, i) => (
+                    <div className='tools-div'>{clickedWork && clickedWork.Tools.map((item, i) => (
                       <span className='p-text tools' key={i}>{item}</span>
                     ))}</div>
                   <div className='work__details-links'>
-                    <a className='work__details-link view' href={clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
-                    {clickedWork?.codeLink? <a className='work__details-link code' href={clickedWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
+                    <a className='work__details-link view' href={clickedWork && clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
+                    {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
                   </div>
                 </div>  
 
