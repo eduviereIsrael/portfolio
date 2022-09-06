@@ -62,9 +62,9 @@ const ProjectPages = () => {
                   <div>
                     <p className='p-text'>My Role: {vWork?.Role}</p>
                   </div>
-                  {/* <div className='tools-div'>{clickedWork.Tools.map((item, i) => (
+                  <div className='tools-div'>{vWork.Tools.map((item, i) => (
                     <span className='p-text tools' key={i}>{item}</span>
-                  ))}</div> */}
+                  ))}</div>
                 <div className='work__details-links'>
                   <a className='work__details-link view' href={vWork?.projectLink} target="_blank" rel="noreferrer">view project</a>
                   {vWork?.codeLink? <a className='work__details-link code' href={vWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
