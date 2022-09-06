@@ -1,6 +1,8 @@
 import React,{ createContext, useContext, useState, useEffect} from 'react';
 // import axios from "axios";
 import { client } from '../client';
+import { useParams } from 'react-router-dom';
+
 
 
 
@@ -8,7 +10,7 @@ const Context = createContext();
 
 
 export const StateContext = ({children}) => {
-    const [works, setWorks] = useState([]);
+    const [proj, setProj] = useState([]);
     const [abouts, setAbouts] = useState([]);
     const [experience, setExperience] = useState([]);
     const [skills, setSkills] = useState([])
@@ -17,6 +19,9 @@ export const StateContext = ({children}) => {
     const [showDetails, setShowDetails] = useState(false);
     const [clickedWork, setClickedWork] = useState({})
     const [open, setOpen] = useState(false);
+    const [project, setProject] = useState({});
+    
+
   
     
 // abouts, works, experiences, skills, testimonials, brands
@@ -41,7 +46,7 @@ export const StateContext = ({children}) => {
         client.fetch(worksQuery)
           .then((data) => {
             // console.log(data)
-            setWorks(data)
+            setProj(data)
           })
 
         client.fetch(experiencesQuery)
@@ -70,6 +75,11 @@ export const StateContext = ({children}) => {
 
       }, [])
 
+    useEffect(() => {
+      localStorage.setItem('project', JSON.stringify(clickedWork));
+      // console.log(clickedWork)
+    }, [clickedWork]);
+
     const handleWorkClick = () => {
         setOpen(true)
         // for (let work of works){
@@ -80,6 +90,7 @@ export const StateContext = ({children}) => {
     }
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+  
 
     return (
         <Context.Provider
@@ -98,7 +109,9 @@ export const StateContext = ({children}) => {
                 open,
                 setOpen,
                 handleOpen,
-                handleClose
+                handleClose,
+                project,
+                setProject
             }}>
             {children}
         </Context.Provider>

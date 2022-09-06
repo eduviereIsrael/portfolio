@@ -1,32 +1,35 @@
-import React from 'react';
-
-import { About, Footer, Header, Skills, Testimonial, Work } from './container';
-
+import React, {useEffect} from 'react';
+import ProjectPages from './ProjectPages';
+import Main from './Main'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {Navbar} from './components';
-import './App.scss';
-import WorkDetails from './components/WorkDetails/WorkDetails';
-import BasicModal from './container/BasicModal';
-// import { useStateContext } from './context/StateContext';
+
+import { useLocation } from "react-router";
+
+const WrapScroll = (props) => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return <>{props.children}</>
+};
 
 const App = () => {
 
-  // const { works, abouts } = useStateContext();
-
-  // console.log(works, abouts)
-
-
   return (
-      <div className="app">
-        <Navbar />
-        <Header />
-        <About  />
-        <Work />
-        <Skills />
-        <Testimonial />
-        <Footer />
-        <WorkDetails />
-        {/* <BasicModal /> */}
-      </div>
+      <Router>
+        <WrapScroll>
+          <div className="app">
+            <Navbar />
+            <Routes>
+              <Route path="/" element = {<Main/>} />
+              <Route path="/project/:projectName" element = {<ProjectPages/>} />
+            </Routes>
+          </div>
+        </WrapScroll>
+      </Router>
+    
   )
 }
 

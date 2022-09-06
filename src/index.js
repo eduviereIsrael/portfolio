@@ -22,6 +22,5 @@ root.render(
     <StateContext>
       <App />
     </StateContext>
-
   </StrictMode>
 );

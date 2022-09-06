@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { HiMenuAlt,HiMenuAlt4,HiX } from 'react-icons/hi';
-import { motion } from 'framer-motion'
-
-import { images } from '../../constants'
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { images } from '../../constants';
 import './Navbar.scss';
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav className='app__navbar'>
-      <div className='app__navbar-logo'>
-        <img src={images.logo} alt="logo" />
-      </div>
+      <Link to={'/'}>
+        <div className='app__navbar-logo'>
+          <img src={images.logo} alt="logo" />
+        </div>
+      </Link>
+      
       <ul className='app__navbar-links'>
         {['home', 'about', 'work', 'skills', 'contact' ].map((item) => (
           <li className='app__flex p-text' key={`link-${item}`}>
