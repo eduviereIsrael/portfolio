@@ -52,22 +52,22 @@ const ProjectPages = () => {
         <div className='clicked__work'>
             <div className='work__details'>
               <div className='work__details-img'>
-                <img src={urlFor(vWork.imgUrl)} alt={vWork.name} />
+                <img src={urlFor(vWork?.imgUrl)} alt={vWork.name} />
                 {/* <h1>Hello world</h1> */}
               </div>
                   <h4 className='bold-text'>
-                    {clickedWork.title}
+                    {clickedWork?.title}
                   </h4>
-                  <p className='p-text' style={{marginTop: 10}}>{clickedWork.description}</p>
+                  <p className='p-text' style={{marginTop: 10}}>{vWork?.description}</p>
                   <div>
-                    <p className='p-text'>My Role: {clickedWork.Role}</p>
+                    <p className='p-text'>My Role: {vWork?.Role}</p>
                   </div>
                   {/* <div className='tools-div'>{clickedWork.Tools.map((item, i) => (
                     <span className='p-text tools' key={i}>{item}</span>
                   ))}</div> */}
                 <div className='work__details-links'>
-                  <a className='work__details-link view' href={clickedWork.projectLink} target="_blank" rel="noreferrer">view project</a>
-                  {clickedWork.codeLink? <a className='work__details-link code' href={clickedWork.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
+                  <a className='work__details-link view' href={vWork?.projectLink} target="_blank" rel="noreferrer">view project</a>
+                  {vWork?.codeLink? <a className='work__details-link code' href={vWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
                 </div>
             </div>  
         </div>
