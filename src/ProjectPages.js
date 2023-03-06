@@ -41,8 +41,16 @@ const ProjectPages = () => {
     let foundItem = proj.find(item => item.title === x)
     return foundItem
   }
+  let vWork = getItem(params.name)
 
-  const vWork = getItem(params.name)
+
+  // useEffect(() => {
+  //   localStorage.setItem('work',(vWork));
+  // }, [vWork]);
+
+  if (!vWork){
+    vWork = localStorage.getItem('work')
+  }
   console.log(vWork)
 
 
@@ -62,7 +70,7 @@ const ProjectPages = () => {
                   <div>
                     <p className='p-text'>My Role: {vWork?.Role}</p>
                   </div>
-                  <div className='tools-div'>{vWork.Tools.map((item, i) => (
+                  <div className='tools-div'>{vWork?.Tools.map((item, i) => (
                     <span className='p-text tools' key={i}>{item}</span>
                   ))}</div>
                 <div className='work__details-links'>

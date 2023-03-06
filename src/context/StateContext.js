@@ -3,11 +3,7 @@ import React,{ createContext, useContext, useState, useEffect} from 'react';
 import { client } from '../client';
 import { useParams } from 'react-router-dom';
 
-
-
-
 const Context = createContext();
-
 
 export const StateContext = ({children}) => {
     const [proj, setProj] = useState([]);
@@ -75,10 +71,7 @@ export const StateContext = ({children}) => {
 
       }, [])
 
-    // useEffect(() => {
-    //   localStorage.setItem('project', JSON.stringify(clickedWork));
-    //   // console.log(clickedWork)
-    // }, [clickedWork]);
+    
 
     const handleWorkClick = () => {
         setOpen(true)
