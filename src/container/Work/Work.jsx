@@ -57,7 +57,7 @@ const Work = () => {
       <h2 className='head-text'>
         Selected <span>Projects <br /> I've worked on</span> in the past <span></span> 
       </h2>
-      <div className='app__work-filter'>
+      {/* <div className='app__work-filter'>
         {['All'].map((item, index) => (
           <div key={item}
           onClick={() => handleWorkFilter(item)}
@@ -66,7 +66,7 @@ const Work = () => {
             {item}
           </div>
         ))}
-      </div>
+      </div> */}
       <motion.div
       animate = {animateCard}
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
