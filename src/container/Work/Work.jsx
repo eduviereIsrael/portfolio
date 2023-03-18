@@ -13,7 +13,7 @@ import './Work.scss';
 
 const Work = () => {
 
-  const {showDetails, setShowDetails, handleWorkClick, setClickedWork } = useStateContext();
+  const { slugUrl } = useStateContext();
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [filterWork, setFilterWork] = useState([]);
@@ -26,8 +26,9 @@ const Work = () => {
       .then((data) => {
         setWorks(data);
         setFilterWork(data);
+        // console.log(works)
       })
-  }, [])
+  }, [works])
   // const settingFilterWork = async () => {
   //   await works.length
   //   setFilterWork(works)
@@ -47,10 +48,8 @@ const Work = () => {
       } else {
         setFilterWork(works.filter((work) => work.tags.includes(item)))
       }
-    }, 500)
+    }, 500);
   }
-  
-  // if (works.length > 1) handleWorkFilter();
 
   return (
     <>
@@ -72,7 +71,7 @@ const Work = () => {
       transition ={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__work-portfolio">
         {filterWork.length? filterWork.map((work, i) => (
-          <Link to={`/project/${work.title}`} key={i}>
+          <Link to={`/project/${slugUrl(work.title)}`} key={i}>
             <div className='app__work-item app__flex'  onClick={() => {
                 // setShowDetails(!showDetails)
                 // setClickedWork(work)

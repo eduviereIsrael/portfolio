@@ -3,6 +3,7 @@ import { useStateContext } from './context/StateContext';
 import {urlFor} from './client';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router';
+import { client } from './client';
 
 
 import "./ProjectPages.scss";
@@ -32,58 +33,84 @@ const AnimatePage = ({children}) => {
 
 
 const ProjectPages = () => {
+  const [vWork, setVwork] = useState({});
+  const [proj, setProj] = useState([]);
 
-  const { proj, clickedWork} = useStateContext();
+
+  const { slugUrl } = useStateContext();
 
   const params = useParams()
 
   const getItem = (x) => {
-    let foundItem = proj.find(item => item.title === x)
+    let foundItem = proj.find(item => slugUrl(item.title) === x)
     return foundItem
   }
-  let vWork = getItem(params.name)
 
+  const worksQuery = '*[_type == "works"]'
 
-  // useEffect(() => {
-  //   localStorage.setItem('work',(vWork));
-  // }, [vWork]);
+  useEffect(() => {
+    client.fetch(worksQuery)
+    .then((data) => {
+      setProj(data)
+    }).then(() => {
+      setVwork(getItem(params.name))
+      // console.log(vWork)
 
-  if (!vWork){
-    vWork = localStorage.getItem('work')
-  }
-  console.log(vWork)
+    }).then(() => {
+    })
 
+  }, [vWork, getItem, params.name]);
 
-  return (
-    <AnimatePage>
-      {/* {vWork?  */}
-        <div className='clicked__work'>
-            <div className='work__details'>
-              <div className='work__details-img'>
-                <img src={urlFor(vWork?.imgUrl)} alt={vWork.name} />
-                {/* <h1>Hello world</h1> */}
-              </div>
-                  <h4 className='bold-text'>
-                    {clickedWork?.title}
-                  </h4>
-                  <p className='p-text' style={{marginTop: 10}}>{vWork?.description}</p>
-                  <div>
-                    <p className='p-text'>My Role: {vWork?.Role}</p>
+    return (
+      <AnimatePage>
+          { vWork? <div className='clicked__work'>
+              <div className='work__details'>
+                <motion.div className='work__details-img' initial={{opacity: 0}} whileInView={{opacity: 1}}>
+                  {vWork.imgUrl && <img src={urlFor(vWork?.imgUrl)} alt={vWork.name} />}
+                </motion.div>
+                    <motion.h4 
+                      className='bold-text' 
+                      initial={{opacity: 0}} 
+                      whileInView={{opacity: 1}}
+                      transition={{delay: 0.5}}
+                    >
+                      {vWork?.title}
+                    </motion.h4>
+                    <motion.p 
+                      className='p-text' 
+                      style={{marginTop: 10}}
+                      initial={{opacity: 0}} 
+                      whileInView={{opacity: 1}}
+                      transition={{delay: 0.6}}
+                    >{vWork?.description}</motion.p>
+                    <div>
+                      <motion.p 
+                        className='p-text'
+                        initial={{opacity: 0}} 
+                      whileInView={{opacity: 1}}
+                      transition={{delay: 0.7}}
+                      >My Role: {vWork?.Role}</motion.p>
+                    </div>
+                    <motion.div 
+                      className='tools-div'
+                      initial={{opacity: 0}} 
+                      whileInView={{opacity: 1}}
+                      transition={{delay: 0.8}}
+                    >{vWork?.Tools?.map((item, i) => (
+                      <span className='p-text tools' key={i}>{item}</span>
+                    ))}</motion.div>
+                  <div className='work__details-links'>
+                    <a className='work__details-link view' href={vWork?.projectLink} target="_blank" rel="noreferrer">View Project</a>
+                    {vWork?.codeLink? <a className='work__details-link code' href={vWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
                   </div>
-                  <div className='tools-div'>{vWork?.Tools.map((item, i) => (
-                    <span className='p-text tools' key={i}>{item}</span>
-                  ))}</div>
-                <div className='work__details-links'>
-                  <a className='work__details-link view' href={vWork?.projectLink} target="_blank" rel="noreferrer">view project</a>
-                  {vWork?.codeLink? <a className='work__details-link code' href={vWork?.codeLink} target="_blank" rel="noreferrer">github repo</a> : ''}
-                </div>
-            </div>  
-        </div>
-        {/* : <></>
-      } */}
-    </AnimatePage>
+              </div>  
+          </div> : ""}
+         
+      </AnimatePage>
+      
+    )
+  }
 
-  )
-}
+  
 
 export default ProjectPages

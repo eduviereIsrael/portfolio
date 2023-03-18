@@ -81,6 +81,10 @@ export const StateContext = ({children}) => {
         //   }
         // }
     }
+    const slugUrl = (x) => {
+
+      return x.replace(" ", "-").toLowerCase()
+    }
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
   
@@ -105,7 +109,8 @@ export const StateContext = ({children}) => {
                 handleClose,
                 project,
                 proj,
-                setProject
+                setProject,
+                slugUrl
             }}>
             {children}
         </Context.Provider>
